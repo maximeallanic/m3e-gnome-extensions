@@ -1,0 +1,7 @@
+/* Charging colours of the Android 16 battery. They are fixed on Android whatever the theme (the Material colour
+   scheme has no success role). The pill height and the low-battery colour come from the theme stylesheet
+   (m3e-gnome: -status-bar-height and -status-bar-low on `#panel .status-bar-battery`). */
+.status-bar-battery {
+  -status-bar-charging: #18cc47;
+  -status-bar-charging-text: #063312;
+}

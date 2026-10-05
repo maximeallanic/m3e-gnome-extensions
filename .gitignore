@@ -1,0 +1,9 @@
+node_modules/
+dist/
+*.zip
+__pycache__/
+*.pyc
+# Embedded copies of shared/m3e, produced by scripts/build.sh
+extensions/*/m3e/
+# Bench artefacts
+tests/bench/out/

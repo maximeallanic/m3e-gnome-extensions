@@ -1,0 +1,10 @@
+{
+  "uuid": "status-bar@maximeallanic.github.io",
+  "name": "Status Bar (Android style)",
+  "description": "Android-style status icons in the top bar: each icon takes the width of its ink instead of a square frame, the volume indicator only shows when the output is muted, and the battery is drawn as a pill with the percentage inside. Colours and the pill height come from the m3e-gnome Shell theme stylesheet. Reaches into private fields of the Shell quick settings (verified on GNOME Shell 50.5 only).",
+  "shell-version": ["50"],
+  "url": "https://github.com/maximeallanic/m3e-gnome-extensions",
+  "version": 1,
+  "version-name": "0.1.0",
+  "gettext-domain": "status-bar@maximeallanic.github.io"
+}

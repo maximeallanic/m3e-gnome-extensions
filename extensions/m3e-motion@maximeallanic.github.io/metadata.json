@@ -1,0 +1,10 @@
+{
+  "uuid": "m3e-motion@maximeallanic.github.io",
+  "name": "M3E Motion",
+  "description": "Material 3 Expressive motion for GNOME Shell: spring-driven container transforms, shared-axis and fade transitions for windows, workspaces, the overview, dialogs, banners and the OSD, plus M3E switch, slider, menu and quick-settings tile components. Styling comes from the m3e-gnome theme templates, which are required for the intended look.",
+  "shell-version": ["50"],
+  "url": "https://github.com/maximeallanic/m3e-gnome-extensions",
+  "version": 1,
+  "version-name": "0.1.0",
+  "gettext-domain": "m3e-motion"
+}

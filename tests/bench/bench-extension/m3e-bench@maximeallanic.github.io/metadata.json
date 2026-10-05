@@ -1,0 +1,9 @@
+{
+  "uuid": "m3e-bench@maximeallanic.github.io",
+  "name": "M3E bench",
+  "description": "Test bench extension: plays animation scenarios inside a nested, headless GNOME Shell. Never enable it in a real session.",
+  "shell-version": ["50"],
+  "version": 1,
+  "m3e-bench-name": "io.github.maximeallanic.M3eBench",
+  "m3e-bench-path": "/io/github/maximeallanic/M3eBench"
+}

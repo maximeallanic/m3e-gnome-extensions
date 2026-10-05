@@ -1,0 +1,6 @@
+# Dash to Dock settings for the nested Shell (private dconf database only).
+# show-mounts / show-trash start the org.freedesktop.FileManager1 client, which would activate the file manager on the
+# private bus (and its extensions): kept off so the bench never starts anything outside the Shell.
+[org/gnome/shell/extensions/dash-to-dock]
+show-mounts=false
+show-trash=false

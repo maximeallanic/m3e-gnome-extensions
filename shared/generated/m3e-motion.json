@@ -1,0 +1,511 @@
+{
+  "android": {
+    "_convention": "Android 17 motions transposed to the Shell (design decision: animations identical to a Pixel, GNOME structure). Same rule as patterns-source.json: every scalar field <c> has a sibling field <c>_origin ('file:line' in a pinned upstream source, see shared/data/PROVENANCE.md for the prefixes and commits, or 'measured: <tool and data>'). Android lengths are in dp; the desktop multiplies them by density (72 dp tile -> 56 px). Springs: stiffness and damping ratio of SpringForce / spring() (mass 1, same units as the Compose springs). Curves: cubic segments [x0, y0, x1, y1, x2, y2, x3, y3] from (0, 0) to (1, 1) (curve.js).",
+    "curves": {
+      "AccelerateDecelerate": {
+        "segments": [
+          [
+            0,
+            0,
+            0.3628,
+            -0.0016,
+            0.6372,
+            1.0016,
+            1,
+            1
+          ]
+        ],
+        "segments_origin": "androidx/SwitchCompat.java:1131-1134 (ObjectAnimator without interpolator: AccelerateDecelerateInterpolator, cos((x + 1)·π)/2 + 0.5); cubic segment fitted by tools/bezier.py, max error 0.01 % of the travel"
+      },
+      "Emphasized": {
+        "segments": [
+          [
+            0,
+            0,
+            0.05,
+            0,
+            0.133333,
+            0.06,
+            0.166666,
+            0.4
+          ],
+          [
+            0.166666,
+            0.4,
+            0.208333,
+            0.82,
+            0.25,
+            1,
+            1,
+            1
+          ]
+        ],
+        "segments_origin": "mdc-android/tokens.xml:57 (emphasized path); same path as fast_out_extra_slow_in (aosp-frameworks-base/fast_out_extra_slow_in.xml)"
+      },
+      "FastOutSlowIn": {
+        "segments": [
+          [
+            0,
+            0,
+            0.4,
+            0,
+            0.2,
+            1,
+            1,
+            1
+          ]
+        ],
+        "segments_origin": "aosp-frameworks-libs-systemui/Interpolators.java:126 and :152 (FAST_OUT_SLOW_IN = LEGACY = PathInterpolator(0.4, 0, 0.2, 1))"
+      },
+      "FastOutSlowInReverse": {
+        "segments": [
+          [
+            0,
+            0,
+            0.8,
+            0,
+            0.6,
+            1,
+            1,
+            1
+          ]
+        ],
+        "segments_origin": "aosp-frameworks-libs-systemui/Interpolators.java:160-161"
+      },
+      "Linear": {
+        "segments": [
+          [
+            0,
+            0,
+            0.333333,
+            0.333333,
+            0.666667,
+            0.666667,
+            1,
+            1
+          ]
+        ],
+        "segments_origin": "aosp-frameworks-base/activity_open_enter.xml:28 (@interpolator/linear)"
+      },
+      "Standard": {
+        "segments": [
+          [
+            0,
+            0,
+            0.2,
+            0,
+            0,
+            1,
+            1,
+            1
+          ]
+        ],
+        "segments_origin": "mdc-android/tokens.xml:73 (m3_sys_motion_easing_standard)"
+      }
+    },
+    "density": 0.7777777777777778,
+    "density_origin": "design decision: lengths scaled by 56/72 (a 72 dp Android tile becomes 56 px on the desktop)",
+    "motions": {
+      "activityOpen": {
+        "alphaDelayMs": 50,
+        "alphaDelayMs_origin": "aosp-frameworks-base/activity_open_enter.xml:29",
+        "alphaDurationMs": 83,
+        "alphaDurationMs_origin": "aosp-frameworks-base/activity_open_enter.xml:30",
+        "curve": "Emphasized",
+        "curve_origin": "aosp-frameworks-base/activity_open_enter.xml:38 (fast_out_extra_slow_in)",
+        "durationMs": 450,
+        "durationMs_origin": "aosp-frameworks-base/activity_open_enter.xml:39",
+        "slideDp": 96,
+        "slideDp_origin": "aosp-frameworks-base/activity_open_enter.xml:33 (fromXDelta = 96dp)"
+      },
+      "banner": {
+        "durationMs": 400,
+        "durationMs_origin": "aosp-frameworks-base/StackStateAnimator.java:63-64 (HEADS_UP_APPEAR and DISAPPEAR)",
+        "enter": "FastOutSlowIn",
+        "enter_origin": "aosp-frameworks-base/StackStateAnimator.java:562",
+        "exit": "FastOutSlowInReverse",
+        "exit_origin": "aosp-frameworks-base/StackStateAnimator.java:738"
+      },
+      "dialog": {
+        "closeScale": "DialogCollapseScale",
+        "closeScale_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:100-101",
+        "closeX": "DialogCollapseX",
+        "closeX_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:96-97",
+        "closeY": "DialogCollapseY",
+        "closeY_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:98-99",
+        "contentEnterEnd": 0.985,
+        "contentEnterEnd_origin": "aosp-frameworks-base/TransitionAnimator.kt:97-98 (delay 0.85 + duration 0.135)",
+        "contentEnterStart": 0.85,
+        "contentEnterStart_origin": "aosp-frameworks-base/TransitionAnimator.kt:97 (contentAfterFadeInDelay)",
+        "contentExitEnd": 0.8,
+        "contentExitEnd_origin": "aosp-frameworks-base/TransitionAnimator.kt:96 (contentBeforeFadeOutDuration)",
+        "contentExitStart": 0.0,
+        "contentExitStart_origin": "aosp-frameworks-base/TransitionAnimator.kt:95 (contentBeforeFadeOutDelay)",
+        "openPosition": "DialogLaunchPosition",
+        "openPosition_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:85-89",
+        "openScale": "DialogLaunchScale",
+        "openScale_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:90-91"
+      },
+      "launch": {
+        "alphaDelayMs": 25,
+        "alphaDelayMs_origin": "aosp-launcher3/QuickstepTransitionManager.java:209 (APP_LAUNCH_ALPHA_START_DELAY: icon fade)",
+        "alphaDurationMs": 50,
+        "alphaDurationMs_origin": "aosp-launcher3/QuickstepTransitionManager.java:208 (APP_LAUNCH_ALPHA_DURATION)",
+        "curve": "Emphasized",
+        "curve_origin": "aosp-launcher3/QuickstepTransitionManager.java:966-968 (position on EMPHASIZED)",
+        "durationMs": 500,
+        "durationMs_origin": "aosp-launcher3/QuickstepTransitionManager.java:206 (APP_LAUNCH_DURATION)"
+      },
+      "notifications": {
+        "spring": "NotificationTranslation",
+        "spring_origin": "aosp-frameworks-base/PhysicsPropertyAnimator.kt:114"
+      },
+      "osd": {
+        "alphaAllOrNothing": true,
+        "alphaAllOrNothing_origin": "aosp-frameworks-base/VolumeDialogViewBinder.kt:238 (alpha = ceil(fraction), translationX = lerp(largeur, 0, fraction))",
+        "spring": "VolumeDialog",
+        "spring_origin": "aosp-frameworks-base/VolumeDialogViewBinder.kt:197-198 (fraction 0 -> 1 on this spring)"
+      },
+      "qsShade": {
+        "closeDp": 177,
+        "closeDp_origin": "measured: same spring fitted on the shade-closing recording from 0 to 267 ms (target 177 dp, rms 2.7 dp)",
+        "cutoffDp": 150,
+        "cutoffDp_origin": "measured: shade-closing recording (the content disappears at -150 dp, 267 ms)",
+        "openDp": 164,
+        "openDp_origin": "measured: same Pixel 10 Pro screen-recording fit (X0 = -164.1 dp at spring release; first visible frame at -149 dp)",
+        "spring": "ShadeExpansionMeasured",
+        "spring_origin": "measured: see springs.ShadeExpansionMeasured"
+      },
+      "returnHome": {
+        "scale": "GestureHomeScale",
+        "scale_origin": "aosp-launcher3/config.xml:88-89",
+        "x": "GestureHomeX",
+        "x_origin": "aosp-launcher3/config.xml:95-96",
+        "y": "GestureHomeY",
+        "y_origin": "aosp-launcher3/config.xml:97-98"
+      },
+      "switch": {
+        "iconDp": 16,
+        "iconDp_origin": "m3e-gnome theme, GTK 4 stylesheet (Switch.UnselectedIconSize token: 16 dp icon on the GTK side)",
+        "morphCurve": "Emphasized",
+        "morphCurve_origin": "mdc-android/mtrl_switch_thumb_unchecked_checked.xml:24",
+        "morphHeightDp": 22,
+        "morphHeightDp_origin": "mdc-android/strings.xml:32",
+        "morphLongMs": 150,
+        "morphLongMs_origin": "mdc-android/integers.xml:26 (post_morphing = short3 = 150, tokens.xml:124)",
+        "morphShortMs": 100,
+        "morphShortMs_origin": "mdc-android/integers.xml:25 (pre_morphing = short2 = 100, tokens.xml:123)",
+        "morphWidthDp": 32,
+        "morphWidthDp_origin": "mdc-android/strings.xml:32 (mtrl_switch_thumb_path_morphing : 32 × 22)",
+        "pressCurve": "Standard",
+        "pressCurve_origin": "mdc-android/mtrl_switch_thumb_pressed_checked.xml:26-27",
+        "pressMs": 100,
+        "pressMs_origin": "mdc-android/integers.xml:27 (pressed = short2)",
+        "slideCurve": "AccelerateDecelerate",
+        "slideCurve_origin": "androidx/SwitchCompat.java:1131-1134 (ValueAnimator's default interpolator)",
+        "slideMs": 250,
+        "slideMs_origin": "androidx/SwitchCompat.java:104 (THUMB_ANIMATION_DURATION ; ObjectAnimator sans interpolateur : AccelerateDecelerate)",
+        "thumbDp": 24,
+        "thumbDp_origin": "mdc-android/strings.xml:28 (checked path, radius 12; the unchecked thumb with an icon has the same size)",
+        "thumbPressedDp": 28,
+        "thumbPressedDp_origin": "mdc-android/strings.xml:26 (pressed path, radius 14)"
+      },
+      "tile": {
+        "bounceDp": 8,
+        "bounceDp_origin": "aosp-frameworks-base/BounceableTileViewModel.kt:72 (BounceSize)",
+        "bounceMaxWaitMs": 1000,
+        "bounceMaxWaitMs_origin": "aosp-frameworks-base/Bounceable.kt:101 (MAX_WAIT_TIME_MILLIS)",
+        "bounceMinRatio": 0.75,
+        "bounceMinRatio_origin": "aosp-frameworks-base/Bounceable.kt:100 (MINIMUM_BOUNCE_RATIO)",
+        "bounceSpring": "ComposeSpringDefault",
+        "bounceSpring_origin": "aosp-frameworks-base/Bounceable.kt:70",
+        "spring": "ComposeSpringDefault",
+        "spring_origin": "aosp-frameworks-base/Tile.kt:180 and :190 (animateColorAsState, animateDpAsState: default spring())"
+      }
+    },
+    "springs": {
+      "ComposeSpringDefault": {
+        "damping": 1.0,
+        "damping_origin": "androidx/VectorizedAnimationSpec.kt:839 (Spring.DampingRatioNoBouncy)",
+        "stiffness": 1500.0,
+        "stiffness_origin": "androidx/VectorizedAnimationSpec.kt:801 (Spring.StiffnessMedium, default of spring(): AnimationSpec.kt:834-836)"
+      },
+      "DialogCollapseScale": {
+        "damping": 0.9,
+        "damping_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:101",
+        "stiffness": 380.0,
+        "stiffness_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:100 (COLLAPSE, scaleStiffness)"
+      },
+      "DialogCollapseX": {
+        "damping": 0.9,
+        "damping_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:97",
+        "stiffness": 380.0,
+        "stiffness_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:96 (COLLAPSE, centerXStiffness)"
+      },
+      "DialogCollapseY": {
+        "damping": 0.87,
+        "damping_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:99",
+        "stiffness": 380.0,
+        "stiffness_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:98 (COLLAPSE, centerYStiffness)"
+      },
+      "DialogLaunchPosition": {
+        "damping": 1.1,
+        "damping_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:87 and :89",
+        "stiffness": 700.0,
+        "stiffness_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:86-89 (LAUNCH, centerX and centerY)"
+      },
+      "DialogLaunchScale": {
+        "damping": 1.3,
+        "damping_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:91 (scaleDampingRatio)",
+        "stiffness": 700.0,
+        "stiffness_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:90 (LAUNCH, scaleStiffness)"
+      },
+      "GestureHomeScale": {
+        "damping": 0.99,
+        "damping_origin": "aosp-launcher3/config.xml:88 (swipe_up_rect_scale_damping_ratio_v2)",
+        "stiffness": 500.0,
+        "stiffness_origin": "aosp-launcher3/config.xml:89 (swipe_up_rect_scale_stiffness_v2, active variant: RectFSpringAnim.java:260)"
+      },
+      "GestureHomeX": {
+        "damping": 0.965,
+        "damping_origin": "aosp-launcher3/config.xml:95 (swipe_up_rect_x_damping_ratio)",
+        "stiffness": 450.0,
+        "stiffness_origin": "aosp-launcher3/config.xml:96 (swipe_up_rect_x_stiffness; read by RectFSpringAnim.java:444-448)"
+      },
+      "GestureHomeY": {
+        "damping": 0.95,
+        "damping_origin": "aosp-launcher3/config.xml:97 (swipe_up_rect_y_damping_ratio)",
+        "stiffness": 400.0,
+        "stiffness_origin": "aosp-launcher3/config.xml:98 (swipe_up_rect_y_stiffness)"
+      },
+      "NotificationSnapBack": {
+        "damping": 0.52,
+        "damping_origin": "aosp-frameworks-base/SwipeHelper.java:71 (SNAP_BACK_SPRING_DAMPING_RATIO)",
+        "stiffness": 550.0,
+        "stiffness_origin": "aosp-frameworks-base/SwipeHelper.java:70 (SNAP_BACK_SPRING_STIFFNESS)"
+      },
+      "NotificationTranslation": {
+        "damping": 0.68,
+        "damping_origin": "aosp-frameworks-base/PhysicsPropertyAnimator.kt:114",
+        "stiffness": 380.0,
+        "stiffness_origin": "aosp-frameworks-base/PhysicsPropertyAnimator.kt:114 (createDefaultSpring)"
+      },
+      "ShadeExpansionMeasured": {
+        "damping": 0.925,
+        "damping_origin": "measured: same fit as the stiffness",
+        "stiffness": 197.0,
+        "stiffness_origin": "measured: spring fitted by the author on a screen recording of a Pixel 10 Pro (quick-settings shade opening, frames from 70 ms; rms 0.50 dp). Android's shade is an interpolated fling, so the visible curve is what is reproduced. The measurement data is not part of this repository"
+      },
+      "VolumeDialog": {
+        "damping": 0.9,
+        "damping_origin": "aosp-frameworks-base/VolumeDialogViewBinder.kt:62 (SPRING_DAMPING_RATIO)",
+        "stiffness": 700.0,
+        "stiffness_origin": "aosp-frameworks-base/VolumeDialogViewBinder.kt:61 (SPRING_STIFFNESS)"
+      }
+    }
+  },
+  "gtk": {
+    "DefaultEffects": {
+      "curve": [
+        0.2295,
+        0.1781,
+        0.2051,
+        0.9454
+      ],
+      "durationMs": 159,
+      "errorPct": 1.27
+    },
+    "DefaultSpatial": {
+      "curve": [
+        0.1878,
+        0.0167,
+        0.2225,
+        1.2043
+      ],
+      "durationMs": 313,
+      "errorPct": 1.16
+    },
+    "FastEffects": {
+      "curve": [
+        0.2352,
+        0.1637,
+        0.1936,
+        0.9434
+      ],
+      "durationMs": 103,
+      "errorPct": 1.28
+    },
+    "FastSpatial": {
+      "curve": [
+        0.3897,
+        0.6966,
+        0.0182,
+        1.2757
+      ],
+      "durationMs": 271,
+      "errorPct": 3.52
+    },
+    "SlowEffects": {
+      "curve": [
+        0.2276,
+        0.1736,
+        0.1852,
+        0.9397
+      ],
+      "durationMs": 225,
+      "errorPct": 1.27
+    },
+    "SlowSpatial": {
+      "curve": [
+        0.1768,
+        -0.0161,
+        0.2244,
+        1.2185
+      ],
+      "durationMs": 432,
+      "errorPct": 1.16
+    }
+  },
+  "patterns": {
+    "_convention": "Every scalar field (number, boolean, spring name, mode) <c> has a sibling field <c>_origin in the same object: 'file:line' (or 'file:l1-l2') in a pinned upstream source (file prefixes and pinned commits are listed in shared/data/PROVENANCE.md), a URL, or 'M3E-visual: <reason>'. Fractions (fades, masks) are measured on the spatial progress of the segment, p = clamp((u - u0)/(u_target - u0), 0, 1), where u is the normalised position of the travel driven by the pattern's Spatial spring (like MDC's getAnimatedFraction, which drives both the motion and the thresholds: MaterialContainerTransform.java:964-969), and not on a share of its duration. Units are logical px (1 dp = 1 logical px).",
+    "containerTransform": {
+      "fadeIn": {
+        "end": 0.25,
+        "end_origin": "mdc-android/transition/MaterialContainerTransform.java:202 (fade enter ProgressThresholds(0f, 0.25f))",
+        "start": 0.0,
+        "start_origin": "mdc-android/transition/MaterialContainerTransform.java:202 (fade enter ProgressThresholds(0f, 0.25f))"
+      },
+      "fadeReturn": {
+        "end": 0.9,
+        "end_origin": "mdc-android/transition/MaterialContainerTransform.java:208 (fade return ProgressThresholds(0.60f, 0.90f))",
+        "start": 0.6,
+        "start_origin": "mdc-android/transition/MaterialContainerTransform.java:208 (fade return ProgressThresholds(0.60f, 0.90f))"
+      },
+      "fit": "AUTO",
+      "fit_origin": "mdc-android/transition/MaterialContainerTransform.java:243 (fitMode = FIT_MODE_AUTO by default; width or height fitted, content at uniform scale: :1296-1317)",
+      "mode": "IN",
+      "mode_origin": "mdc-android/transition/MaterialContainerTransform.java:242 (fadeMode = FADE_MODE_IN by default)",
+      "scaleMask": {
+        "end": 1.0,
+        "end_origin": "mdc-android/transition/MaterialContainerTransform.java:203 (scaleMask enter)",
+        "start": 0.0,
+        "start_origin": "mdc-android/transition/MaterialContainerTransform.java:203 (scaleMask enter)"
+      },
+      "scaleMaskReturn": {
+        "end": 0.9,
+        "end_origin": "mdc-android/transition/MaterialContainerTransform.java:210 (scaleMask return)",
+        "start": 0.0,
+        "start_origin": "mdc-android/transition/MaterialContainerTransform.java:210 (scaleMask return)"
+      },
+      "shapeMask": {
+        "end": 0.75,
+        "end_origin": "mdc-android/transition/MaterialContainerTransform.java:205 (shapeMask enter)",
+        "start": 0.0,
+        "start_origin": "mdc-android/transition/MaterialContainerTransform.java:205 (shapeMask enter)"
+      },
+      "shapeMaskReturn": {
+        "end": 0.9,
+        "end_origin": "mdc-android/transition/MaterialContainerTransform.java:211 (shapeMask return)",
+        "start": 0.3,
+        "start_origin": "mdc-android/transition/MaterialContainerTransform.java:211 (shapeMask return)"
+      },
+      "springEffects": "DefaultEffects",
+      "springEffects_origin": "M3E-visual: MDC drives this pattern with duration/curve (legacy), not with a spring; the spring is chosen by the M3E rule (position/size/radius -> Spatial, opacity -> Effects)",
+      "springSpatial": "DefaultSpatial",
+      "springSpatial_origin": "M3E-visual: MDC drives this pattern with duration/curve (legacy), not with a spring; the spring is chosen by the M3E rule (position/size/radius -> Spatial, opacity -> Effects)"
+    },
+    "fade": {
+      "exitWithoutScale": true,
+      "exitWithoutScale_origin": "mdc-android/transition/MaterialFade.java:65 (setScaleOnDisappear(false)); exit shorter than enter: :40 (motionDurationMedium4 enter) and :43 (motionDurationShort3 exit)",
+      "fadeInEnd": 0.3,
+      "fadeInEnd_origin": "mdc-android/transition/MaterialFade.java:37",
+      "incomingScale": 0.8,
+      "incomingScale_origin": "mdc-android/transition/MaterialFade.java:36",
+      "springEnter": "DefaultSpatial",
+      "springEnterEffects": "DefaultEffects",
+      "springEnterEffects_origin": "M3E-visual: MDC drives this pattern with duration/curve (legacy), not with a spring; the spring is chosen by the M3E rule (position/size/radius -> Spatial, opacity -> Effects); enter = Medium4 duration -> Default",
+      "springEnter_origin": "M3E-visual: MDC drives this pattern with duration/curve (legacy), not with a spring; the spring is chosen by the M3E rule (position/size/radius -> Spatial, opacity -> Effects); enter = Medium4 duration -> Default",
+      "springExit": "FastEffects",
+      "springExit_origin": "M3E-visual: exit uses the Short3 duration (mdc-android/transition/MaterialFade.java:43), shorter -> Fast; opacity -> Effects"
+    },
+    "fadeThrough": {
+      "incomingScale": 0.92,
+      "incomingScale_origin": "mdc-android/transition/MaterialFadeThrough.java:33",
+      "outgoingShare": 0.35,
+      "outgoingShare_origin": "mdc-android/transition/FadeThroughProvider.java:38",
+      "springEffects": "FastEffects",
+      "springEffects_origin": "M3E-visual: MDC uses a duration here; the m3.material.io transition-patterns page ('The exiting screen quickly fades out', snapshot of 2026-10-03) justifies a quick fade, hence FastEffects (a deduction, not a value read from source)",
+      "springSpatial": "DefaultSpatial",
+      "springSpatial_origin": "M3E-visual: MDC drives this pattern with duration/curve (legacy), not with a spring; the spring is chosen by the M3E rule (position/size/radius -> Spatial, opacity -> Effects)"
+    },
+    "morphCorners": {
+      "spring": "FastSpatial",
+      "springEffects": "FastEffects",
+      "springEffects_origin": "m3.material.io motion overview page (snapshot of 2026-10-03), line 80",
+      "spring_origin": "m3.material.io motion overview page (snapshot of 2026-10-03), line 80 (\"All component motion is driven by two tokens: expressive fast spatial and expressive fast effects\")"
+    },
+    "sharedAxis": {
+      "fadeIn": {
+        "end": 1.0,
+        "end_origin": "mdc-android/transition/FadeThroughProvider.java:71",
+        "start": 0.35,
+        "start_origin": "mdc-android/transition/FadeThroughProvider.java:38 and :70"
+      },
+      "fadeOut": {
+        "end": 0.35,
+        "end_origin": "mdc-android/transition/FadeThroughProvider.java:38 and :84",
+        "start": 0.0,
+        "start_origin": "mdc-android/transition/FadeThroughProvider.java:83"
+      },
+      "scaleZ": {
+        "incomingStart": 0.8,
+        "incomingStart_origin": "mdc-android/transition/ScaleProvider.java:40",
+        "outgoingEnd": 1.1,
+        "outgoingEnd_origin": "mdc-android/transition/ScaleProvider.java:39"
+      },
+      "slidePx": 30,
+      "slidePx_origin": "mdc-android/transition/dimens.xml:18 (mtrl_transition_shared_axis_slide_distance = 30dp; assumption: 1 dp = 1 logical px, hence 30 logical px)",
+      "springEffects": "DefaultEffects",
+      "springEffects_origin": "M3E-visual: MDC drives this pattern with duration/curve (legacy), not with a spring; the spring is chosen by the M3E rule (position/size/radius -> Spatial, opacity -> Effects)",
+      "springSpatial": "DefaultSpatial",
+      "springSpatial_origin": "M3E-visual: MDC drives this pattern with duration/curve (legacy), not with a spring; the spring is chosen by the M3E rule (position/size/radius -> Spatial, opacity -> Effects)"
+    }
+  },
+  "springs": {
+    "DefaultEffects": {
+      "damping": 1.0,
+      "origin": "m3e-tokens.json ExpressiveMotion.SpringDefaultEffectsStiffness / SpringDefaultEffectsDamping (androidx ExpressiveMotionTokens.kt)",
+      "stiffness": 1600.0
+    },
+    "DefaultSpatial": {
+      "damping": 0.8,
+      "origin": "m3e-tokens.json ExpressiveMotion.SpringDefaultSpatialStiffness / SpringDefaultSpatialDamping (androidx ExpressiveMotionTokens.kt)",
+      "stiffness": 380.0
+    },
+    "FastEffects": {
+      "damping": 1.0,
+      "origin": "m3e-tokens.json ExpressiveMotion.SpringFastEffectsStiffness / SpringFastEffectsDamping (androidx ExpressiveMotionTokens.kt)",
+      "stiffness": 3800.0
+    },
+    "FastSpatial": {
+      "damping": 0.6,
+      "origin": "m3e-tokens.json ExpressiveMotion.SpringFastSpatialStiffness / SpringFastSpatialDamping (androidx ExpressiveMotionTokens.kt)",
+      "stiffness": 800.0
+    },
+    "SlowEffects": {
+      "damping": 1.0,
+      "origin": "m3e-tokens.json ExpressiveMotion.SpringSlowEffectsStiffness / SpringSlowEffectsDamping (androidx ExpressiveMotionTokens.kt)",
+      "stiffness": 800.0
+    },
+    "SlowSpatial": {
+      "damping": 0.8,
+      "origin": "m3e-tokens.json ExpressiveMotion.SpringSlowSpatialStiffness / SpringSlowSpatialDamping (androidx ExpressiveMotionTokens.kt)",
+      "stiffness": 200.0
+    }
+  },
+  "thresholds": {
+    "degree": 0.1,
+    "px": 0.5,
+    "unit": 0.01
+  }
+}

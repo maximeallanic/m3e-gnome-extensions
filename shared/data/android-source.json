@@ -1,0 +1,290 @@
+{
+  "_convention": "Android 17 motions transposed to the Shell (design decision: animations identical to a Pixel, GNOME structure). Same rule as patterns-source.json: every scalar field <c> has a sibling field <c>_origin ('file:line' in a pinned upstream source, see shared/data/PROVENANCE.md for the prefixes and commits, or 'measured: <tool and data>'). Android lengths are in dp; the desktop multiplies them by density (72 dp tile -> 56 px). Springs: stiffness and damping ratio of SpringForce / spring() (mass 1, same units as the Compose springs). Curves: cubic segments [x0, y0, x1, y1, x2, y2, x3, y3] from (0, 0) to (1, 1) (curve.js).",
+  "density": 0.7777777777777778,
+  "density_origin": "design decision: lengths scaled by 56/72 (a 72 dp Android tile becomes 56 px on the desktop)",
+  "springs": {
+    "ComposeSpringDefault": {
+      "stiffness": 1500.0,
+      "stiffness_origin": "androidx/VectorizedAnimationSpec.kt:801 (Spring.StiffnessMedium, default of spring(): AnimationSpec.kt:834-836)",
+      "damping": 1.0,
+      "damping_origin": "androidx/VectorizedAnimationSpec.kt:839 (Spring.DampingRatioNoBouncy)"
+    },
+    "ShadeExpansionMeasured": {
+      "stiffness": 197.0,
+      "stiffness_origin": "measured: spring fitted by the author on a screen recording of a Pixel 10 Pro (quick-settings shade opening, frames from 70 ms; rms 0.50 dp). Android's shade is an interpolated fling, so the visible curve is what is reproduced. The measurement data is not part of this repository",
+      "damping": 0.925,
+      "damping_origin": "measured: same fit as the stiffness"
+    },
+    "NotificationTranslation": {
+      "stiffness": 380.0,
+      "stiffness_origin": "aosp-frameworks-base/PhysicsPropertyAnimator.kt:114 (createDefaultSpring)",
+      "damping": 0.68,
+      "damping_origin": "aosp-frameworks-base/PhysicsPropertyAnimator.kt:114"
+    },
+    "NotificationSnapBack": {
+      "stiffness": 550.0,
+      "stiffness_origin": "aosp-frameworks-base/SwipeHelper.java:70 (SNAP_BACK_SPRING_STIFFNESS)",
+      "damping": 0.52,
+      "damping_origin": "aosp-frameworks-base/SwipeHelper.java:71 (SNAP_BACK_SPRING_DAMPING_RATIO)"
+    },
+    "VolumeDialog": {
+      "stiffness": 700.0,
+      "stiffness_origin": "aosp-frameworks-base/VolumeDialogViewBinder.kt:61 (SPRING_STIFFNESS)",
+      "damping": 0.9,
+      "damping_origin": "aosp-frameworks-base/VolumeDialogViewBinder.kt:62 (SPRING_DAMPING_RATIO)"
+    },
+    "DialogLaunchPosition": {
+      "stiffness": 700.0,
+      "stiffness_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:86-89 (LAUNCH, centerX and centerY)",
+      "damping": 1.1,
+      "damping_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:87 and :89"
+    },
+    "DialogLaunchScale": {
+      "stiffness": 700.0,
+      "stiffness_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:90 (LAUNCH, scaleStiffness)",
+      "damping": 1.3,
+      "damping_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:91 (scaleDampingRatio)"
+    },
+    "DialogCollapseX": {
+      "stiffness": 380.0,
+      "stiffness_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:96 (COLLAPSE, centerXStiffness)",
+      "damping": 0.9,
+      "damping_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:97"
+    },
+    "DialogCollapseY": {
+      "stiffness": 380.0,
+      "stiffness_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:98 (COLLAPSE, centerYStiffness)",
+      "damping": 0.87,
+      "damping_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:99"
+    },
+    "DialogCollapseScale": {
+      "stiffness": 380.0,
+      "stiffness_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:100 (COLLAPSE, scaleStiffness)",
+      "damping": 0.9,
+      "damping_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:101"
+    },
+    "GestureHomeX": {
+      "stiffness": 450.0,
+      "stiffness_origin": "aosp-launcher3/config.xml:96 (swipe_up_rect_x_stiffness; read by RectFSpringAnim.java:444-448)",
+      "damping": 0.965,
+      "damping_origin": "aosp-launcher3/config.xml:95 (swipe_up_rect_x_damping_ratio)"
+    },
+    "GestureHomeY": {
+      "stiffness": 400.0,
+      "stiffness_origin": "aosp-launcher3/config.xml:98 (swipe_up_rect_y_stiffness)",
+      "damping": 0.95,
+      "damping_origin": "aosp-launcher3/config.xml:97 (swipe_up_rect_y_damping_ratio)"
+    },
+    "GestureHomeScale": {
+      "stiffness": 500.0,
+      "stiffness_origin": "aosp-launcher3/config.xml:89 (swipe_up_rect_scale_stiffness_v2, active variant: RectFSpringAnim.java:260)",
+      "damping": 0.99,
+      "damping_origin": "aosp-launcher3/config.xml:88 (swipe_up_rect_scale_damping_ratio_v2)"
+    }
+  },
+  "curves": {
+    "FastOutSlowIn": {
+      "segments": [
+        [
+          0,
+          0,
+          0.4,
+          0,
+          0.2,
+          1,
+          1,
+          1
+        ]
+      ],
+      "segments_origin": "aosp-frameworks-libs-systemui/Interpolators.java:126 and :152 (FAST_OUT_SLOW_IN = LEGACY = PathInterpolator(0.4, 0, 0.2, 1))"
+    },
+    "FastOutSlowInReverse": {
+      "segments": [
+        [
+          0,
+          0,
+          0.8,
+          0,
+          0.6,
+          1,
+          1,
+          1
+        ]
+      ],
+      "segments_origin": "aosp-frameworks-libs-systemui/Interpolators.java:160-161"
+    },
+    "Standard": {
+      "segments": [
+        [
+          0,
+          0,
+          0.2,
+          0,
+          0,
+          1,
+          1,
+          1
+        ]
+      ],
+      "segments_origin": "mdc-android/tokens.xml:73 (m3_sys_motion_easing_standard)"
+    },
+    "Emphasized": {
+      "segments": [
+        [
+          0,
+          0,
+          0.05,
+          0,
+          0.133333,
+          0.06,
+          0.166666,
+          0.4
+        ],
+        [
+          0.166666,
+          0.4,
+          0.208333,
+          0.82,
+          0.25,
+          1,
+          1,
+          1
+        ]
+      ],
+      "segments_origin": "mdc-android/tokens.xml:57 (emphasized path); same path as fast_out_extra_slow_in (aosp-frameworks-base/fast_out_extra_slow_in.xml)"
+    },
+    "Linear": {
+      "segments": [
+        [
+          0,
+          0,
+          0.333333,
+          0.333333,
+          0.666667,
+          0.666667,
+          1,
+          1
+        ]
+      ],
+      "segments_origin": "aosp-frameworks-base/activity_open_enter.xml:28 (@interpolator/linear)"
+    }
+  },
+  "motions": {
+    "qsShade": {
+      "spring": "ShadeExpansionMeasured",
+      "spring_origin": "measured: see springs.ShadeExpansionMeasured",
+      "openDp": 164,
+      "openDp_origin": "measured: same Pixel 10 Pro screen-recording fit (X0 = -164.1 dp at spring release; first visible frame at -149 dp)",
+      "closeDp": 177,
+      "closeDp_origin": "measured: same spring fitted on the shade-closing recording from 0 to 267 ms (target 177 dp, rms 2.7 dp)",
+      "cutoffDp": 150,
+      "cutoffDp_origin": "measured: shade-closing recording (the content disappears at -150 dp, 267 ms)"
+    },
+    "tile": {
+      "spring": "ComposeSpringDefault",
+      "spring_origin": "aosp-frameworks-base/Tile.kt:180 and :190 (animateColorAsState, animateDpAsState: default spring())",
+      "bounceDp": 8,
+      "bounceDp_origin": "aosp-frameworks-base/BounceableTileViewModel.kt:72 (BounceSize)",
+      "bounceSpring": "ComposeSpringDefault",
+      "bounceSpring_origin": "aosp-frameworks-base/Bounceable.kt:70",
+      "bounceMinRatio": 0.75,
+      "bounceMinRatio_origin": "aosp-frameworks-base/Bounceable.kt:100 (MINIMUM_BOUNCE_RATIO)",
+      "bounceMaxWaitMs": 1000,
+      "bounceMaxWaitMs_origin": "aosp-frameworks-base/Bounceable.kt:101 (MAX_WAIT_TIME_MILLIS)"
+    },
+    "switch": {
+      "slideMs": 250,
+      "slideMs_origin": "androidx/SwitchCompat.java:104 (THUMB_ANIMATION_DURATION ; ObjectAnimator sans interpolateur : AccelerateDecelerate)",
+      "slideCurve": "AccelerateDecelerate",
+      "slideCurve_origin": "androidx/SwitchCompat.java:1131-1134 (ValueAnimator's default interpolator)",
+      "morphCurve": "Emphasized",
+      "morphCurve_origin": "mdc-android/mtrl_switch_thumb_unchecked_checked.xml:24",
+      "morphShortMs": 100,
+      "morphShortMs_origin": "mdc-android/integers.xml:25 (pre_morphing = short2 = 100, tokens.xml:123)",
+      "morphLongMs": 150,
+      "morphLongMs_origin": "mdc-android/integers.xml:26 (post_morphing = short3 = 150, tokens.xml:124)",
+      "morphWidthDp": 32,
+      "morphWidthDp_origin": "mdc-android/strings.xml:32 (mtrl_switch_thumb_path_morphing : 32 × 22)",
+      "morphHeightDp": 22,
+      "morphHeightDp_origin": "mdc-android/strings.xml:32",
+      "pressMs": 100,
+      "pressMs_origin": "mdc-android/integers.xml:27 (pressed = short2)",
+      "pressCurve": "Standard",
+      "pressCurve_origin": "mdc-android/mtrl_switch_thumb_pressed_checked.xml:26-27",
+      "thumbDp": 24,
+      "thumbDp_origin": "mdc-android/strings.xml:28 (checked path, radius 12; the unchecked thumb with an icon has the same size)",
+      "thumbPressedDp": 28,
+      "thumbPressedDp_origin": "mdc-android/strings.xml:26 (pressed path, radius 14)",
+      "iconDp": 16,
+      "iconDp_origin": "m3e-gnome theme, GTK 4 stylesheet (Switch.UnselectedIconSize token: 16 dp icon on the GTK side)"
+    },
+    "osd": {
+      "spring": "VolumeDialog",
+      "spring_origin": "aosp-frameworks-base/VolumeDialogViewBinder.kt:197-198 (fraction 0 -> 1 on this spring)",
+      "alphaAllOrNothing": true,
+      "alphaAllOrNothing_origin": "aosp-frameworks-base/VolumeDialogViewBinder.kt:238 (alpha = ceil(fraction), translationX = lerp(largeur, 0, fraction))"
+    },
+    "banner": {
+      "durationMs": 400,
+      "durationMs_origin": "aosp-frameworks-base/StackStateAnimator.java:63-64 (HEADS_UP_APPEAR and DISAPPEAR)",
+      "enter": "FastOutSlowIn",
+      "enter_origin": "aosp-frameworks-base/StackStateAnimator.java:562",
+      "exit": "FastOutSlowInReverse",
+      "exit_origin": "aosp-frameworks-base/StackStateAnimator.java:738"
+    },
+    "notifications": {
+      "spring": "NotificationTranslation",
+      "spring_origin": "aosp-frameworks-base/PhysicsPropertyAnimator.kt:114"
+    },
+    "dialog": {
+      "openPosition": "DialogLaunchPosition",
+      "openPosition_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:85-89",
+      "openScale": "DialogLaunchScale",
+      "openScale_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:90-91",
+      "closeX": "DialogCollapseX",
+      "closeX_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:96-97",
+      "closeY": "DialogCollapseY",
+      "closeY_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:98-99",
+      "closeScale": "DialogCollapseScale",
+      "closeScale_origin": "aosp-frameworks-base/DialogTransitionAnimator.kt:100-101",
+      "contentExitStart": 0.0,
+      "contentExitStart_origin": "aosp-frameworks-base/TransitionAnimator.kt:95 (contentBeforeFadeOutDelay)",
+      "contentExitEnd": 0.8,
+      "contentExitEnd_origin": "aosp-frameworks-base/TransitionAnimator.kt:96 (contentBeforeFadeOutDuration)",
+      "contentEnterStart": 0.85,
+      "contentEnterStart_origin": "aosp-frameworks-base/TransitionAnimator.kt:97 (contentAfterFadeInDelay)",
+      "contentEnterEnd": 0.985,
+      "contentEnterEnd_origin": "aosp-frameworks-base/TransitionAnimator.kt:97-98 (delay 0.85 + duration 0.135)"
+    },
+    "launch": {
+      "durationMs": 500,
+      "durationMs_origin": "aosp-launcher3/QuickstepTransitionManager.java:206 (APP_LAUNCH_DURATION)",
+      "curve": "Emphasized",
+      "curve_origin": "aosp-launcher3/QuickstepTransitionManager.java:966-968 (position on EMPHASIZED)",
+      "alphaDelayMs": 25,
+      "alphaDelayMs_origin": "aosp-launcher3/QuickstepTransitionManager.java:209 (APP_LAUNCH_ALPHA_START_DELAY: icon fade)",
+      "alphaDurationMs": 50,
+      "alphaDurationMs_origin": "aosp-launcher3/QuickstepTransitionManager.java:208 (APP_LAUNCH_ALPHA_DURATION)"
+    },
+    "returnHome": {
+      "x": "GestureHomeX",
+      "x_origin": "aosp-launcher3/config.xml:95-96",
+      "y": "GestureHomeY",
+      "y_origin": "aosp-launcher3/config.xml:97-98",
+      "scale": "GestureHomeScale",
+      "scale_origin": "aosp-launcher3/config.xml:88-89"
+    },
+    "activityOpen": {
+      "slideDp": 96,
+      "slideDp_origin": "aosp-frameworks-base/activity_open_enter.xml:33 (fromXDelta = 96dp)",
+      "durationMs": 450,
+      "durationMs_origin": "aosp-frameworks-base/activity_open_enter.xml:39",
+      "curve": "Emphasized",
+      "curve_origin": "aosp-frameworks-base/activity_open_enter.xml:38 (fast_out_extra_slow_in)",
+      "alphaDelayMs": 50,
+      "alphaDelayMs_origin": "aosp-frameworks-base/activity_open_enter.xml:29",
+      "alphaDurationMs": 83,
+      "alphaDurationMs_origin": "aosp-frameworks-base/activity_open_enter.xml:30"
+    }
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "core": {
+    "extensions": [],
+    "scenarios": [
+      "animations",
+      "ease-witness",
+      "spring-DefaultSpatial-40",
+      "spring-DefaultSpatial-400",
+      "spring-DefaultSpatial-2000",
+      "spring-FastSpatial-40",
+      "spring-FastSpatial-400",
+      "spring-FastSpatial-2000",
+      "spring-SlowSpatial-40",
+      "spring-SlowSpatial-400",
+      "spring-SlowSpatial-2000",
+      "spring-DefaultEffects-40",
+      "spring-DefaultEffects-400",
+      "spring-DefaultEffects-2000",
+      "spring-FastEffects-40",
+      "spring-FastEffects-400",
+      "spring-FastEffects-2000",
+      "spring-SlowEffects-40",
+      "spring-SlowEffects-400",
+      "spring-SlowEffects-2000",
+      "interrupt-25",
+      "interrupt-50",
+      "interrupt-75",
+      "gesture",
+      "burst",
+      "slow-down",
+      "color",
+      "effect-path",
+      "no-animations",
+      "not-mapped",
+      "retarget-pending-done",
+      "destroy",
+      "extrapolation",
+      "glsl",
+      "pattern-container",
+      "pattern-axis-x",
+      "pattern-axis-y",
+      "pattern-axis-z",
+      "pattern-fade-through",
+      "pattern-fade-in",
+      "pattern-fade-out",
+      "pattern-morph",
+      "corners-large-window",
+      "corners-texture",
+      "pattern-chain-axis",
+      "pattern-chain-fade",
+      "pattern-container-overlap-source",
+      "pattern-container-overlap-destination",
+      "pattern-partial-destroy",
+      "stop-all"
+    ]
+  },
+  "motion": {
+    "extensions": [
+      "m3e-motion@maximeallanic.github.io"
+    ],
+    "scenarios": [
+      "ease-witness",
+      "window-open",
+      "window-open-from-icon",
+      "window-close",
+      "window-close-to-icon",
+      "window-dialog",
+      "minimize",
+      "minimize-reversal",
+      "maximize",
+      "workspaces",
+      "workspaces-reversal",
+      "workspaces-gesture",
+      "overview",
+      "overview-reversal",
+      "app-grid",
+      "overview-close-window",
+      "switcher",
+      "tile-preview",
+      "folder",
+      "preview-hover",
+      "osd",
+      "shell-dialog",
+      "notification",
+      "shade-quick-settings",
+      "shade-calendar",
+      "tile-morph",
+      "tile-bounce",
+      "switch",
+      "notification-list",
+      "motion-no-animations",
+      "disable-mid-motion"
+    ]
+  },
+  "extensions": {
+    "extensions": [
+      "m3e-extensions@maximeallanic.github.io",
+      "status-bar@maximeallanic.github.io"
+    ],
+    "systemExtensions": [
+      "dash-to-dock@micxgx.gmail.com"
+    ],
+    "dconfKeyfiles": [
+      "dconf/dash-to-dock.keyfile"
+    ],
+    "scenarios": [
+      "stylesheet-reload",
+      "dock-slide",
+      "dock-tooltip",
+      "status-bar-lifecycle"
+    ]
+  }
+}

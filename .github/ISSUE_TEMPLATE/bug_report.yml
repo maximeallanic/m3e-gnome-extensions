@@ -1,0 +1,42 @@
+name: Bug report
+description: Something does not work or misbehaves visually.
+labels: [bug]
+body:
+  - type: dropdown
+    id: extension
+    attributes:
+      label: Extension
+      options: [m3e-motion, m3e-extensions, status-bar, shared toolkit / build scripts, not sure]
+    validations: {required: true}
+  - type: input
+    id: shell
+    attributes:
+      label: GNOME Shell version
+      description: Output of `gnome-shell --version`.
+    validations: {required: true}
+  - type: input
+    id: theme
+    attributes:
+      label: m3e-gnome theme version or commit
+      description: The extensions style themselves through the m3e-gnome theme templates. Say "not installed" if that is the case.
+  - type: dropdown
+    id: session
+    attributes:
+      label: Session type
+      options: [Wayland, X11]
+    validations: {required: true}
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what did you expect?
+    validations: {required: true}
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+  - type: textarea
+    id: log
+    attributes:
+      label: Shell log
+      description: Output of `journalctl --user -b -o cat /usr/bin/gnome-shell | grep -i -E "m3e|status-bar"`, a few minutes around the problem.
+      render: text

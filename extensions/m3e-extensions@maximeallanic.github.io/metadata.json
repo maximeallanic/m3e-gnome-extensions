@@ -1,0 +1,10 @@
+{
+  "uuid": "m3e-extensions@maximeallanic.github.io",
+  "name": "M3E for Extensions",
+  "description": "Material 3 Expressive styling and motion for third-party extensions: loads the m3e-gnome theme's extension stylesheet (re-loaded whenever it is regenerated) and moves the Dash to Dock slide and tooltips on M3E springs. Needs the m3e-gnome theme to produce the stylesheet; Dash to Dock is optional.",
+  "shell-version": ["50"],
+  "url": "https://github.com/maximeallanic/m3e-gnome-extensions",
+  "version": 1,
+  "version-name": "0.1.0",
+  "gettext-domain": "m3e-extensions@maximeallanic.github.io"
+}

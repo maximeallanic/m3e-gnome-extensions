@@ -1,0 +1,105 @@
+{
+  "_convention": "Every scalar field (number, boolean, spring name, mode) <c> has a sibling field <c>_origin in the same object: 'file:line' (or 'file:l1-l2') in a pinned upstream source (file prefixes and pinned commits are listed in shared/data/PROVENANCE.md), a URL, or 'M3E-visual: <reason>'. Fractions (fades, masks) are measured on the spatial progress of the segment, p = clamp((u - u0)/(u_target - u0), 0, 1), where u is the normalised position of the travel driven by the pattern's Spatial spring (like MDC's getAnimatedFraction, which drives both the motion and the thresholds: MaterialContainerTransform.java:964-969), and not on a share of its duration. Units are logical px (1 dp = 1 logical px).",
+  "containerTransform": {
+    "springSpatial": "DefaultSpatial",
+    "springSpatial_origin": "M3E-visual: MDC drives this pattern with duration/curve (legacy), not with a spring; the spring is chosen by the M3E rule (position/size/radius -> Spatial, opacity -> Effects)",
+    "springEffects": "DefaultEffects",
+    "springEffects_origin": "M3E-visual: MDC drives this pattern with duration/curve (legacy), not with a spring; the spring is chosen by the M3E rule (position/size/radius -> Spatial, opacity -> Effects)",
+    "mode": "IN",
+    "mode_origin": "mdc-android/transition/MaterialContainerTransform.java:242 (fadeMode = FADE_MODE_IN by default)",
+    "fit": "AUTO",
+    "fit_origin": "mdc-android/transition/MaterialContainerTransform.java:243 (fitMode = FIT_MODE_AUTO by default; width or height fitted, content at uniform scale: :1296-1317)",
+    "fadeIn": {
+      "start": 0.0,
+      "start_origin": "mdc-android/transition/MaterialContainerTransform.java:202 (fade enter ProgressThresholds(0f, 0.25f))",
+      "end": 0.25,
+      "end_origin": "mdc-android/transition/MaterialContainerTransform.java:202 (fade enter ProgressThresholds(0f, 0.25f))"
+    },
+    "fadeReturn": {
+      "start": 0.6,
+      "start_origin": "mdc-android/transition/MaterialContainerTransform.java:208 (fade return ProgressThresholds(0.60f, 0.90f))",
+      "end": 0.9,
+      "end_origin": "mdc-android/transition/MaterialContainerTransform.java:208 (fade return ProgressThresholds(0.60f, 0.90f))"
+    },
+    "shapeMask": {
+      "start": 0.0,
+      "start_origin": "mdc-android/transition/MaterialContainerTransform.java:205 (shapeMask enter)",
+      "end": 0.75,
+      "end_origin": "mdc-android/transition/MaterialContainerTransform.java:205 (shapeMask enter)"
+    },
+    "shapeMaskReturn": {
+      "start": 0.3,
+      "start_origin": "mdc-android/transition/MaterialContainerTransform.java:211 (shapeMask return)",
+      "end": 0.9,
+      "end_origin": "mdc-android/transition/MaterialContainerTransform.java:211 (shapeMask return)"
+    },
+    "scaleMask": {
+      "start": 0.0,
+      "start_origin": "mdc-android/transition/MaterialContainerTransform.java:203 (scaleMask enter)",
+      "end": 1.0,
+      "end_origin": "mdc-android/transition/MaterialContainerTransform.java:203 (scaleMask enter)"
+    },
+    "scaleMaskReturn": {
+      "start": 0.0,
+      "start_origin": "mdc-android/transition/MaterialContainerTransform.java:210 (scaleMask return)",
+      "end": 0.9,
+      "end_origin": "mdc-android/transition/MaterialContainerTransform.java:210 (scaleMask return)"
+    }
+  },
+  "sharedAxis": {
+    "slidePx": 30,
+    "slidePx_origin": "mdc-android/transition/dimens.xml:18 (mtrl_transition_shared_axis_slide_distance = 30dp; assumption: 1 dp = 1 logical px, hence 30 logical px)",
+    "scaleZ": {
+      "incomingStart": 0.8,
+      "incomingStart_origin": "mdc-android/transition/ScaleProvider.java:40",
+      "outgoingEnd": 1.1,
+      "outgoingEnd_origin": "mdc-android/transition/ScaleProvider.java:39"
+    },
+    "fadeOut": {
+      "start": 0.0,
+      "start_origin": "mdc-android/transition/FadeThroughProvider.java:83",
+      "end": 0.35,
+      "end_origin": "mdc-android/transition/FadeThroughProvider.java:38 and :84"
+    },
+    "fadeIn": {
+      "start": 0.35,
+      "start_origin": "mdc-android/transition/FadeThroughProvider.java:38 and :70",
+      "end": 1.0,
+      "end_origin": "mdc-android/transition/FadeThroughProvider.java:71"
+    },
+    "springSpatial": "DefaultSpatial",
+    "springSpatial_origin": "M3E-visual: MDC drives this pattern with duration/curve (legacy), not with a spring; the spring is chosen by the M3E rule (position/size/radius -> Spatial, opacity -> Effects)",
+    "springEffects": "DefaultEffects",
+    "springEffects_origin": "M3E-visual: MDC drives this pattern with duration/curve (legacy), not with a spring; the spring is chosen by the M3E rule (position/size/radius -> Spatial, opacity -> Effects)"
+  },
+  "fadeThrough": {
+    "incomingScale": 0.92,
+    "incomingScale_origin": "mdc-android/transition/MaterialFadeThrough.java:33",
+    "outgoingShare": 0.35,
+    "outgoingShare_origin": "mdc-android/transition/FadeThroughProvider.java:38",
+    "springSpatial": "DefaultSpatial",
+    "springSpatial_origin": "M3E-visual: MDC drives this pattern with duration/curve (legacy), not with a spring; the spring is chosen by the M3E rule (position/size/radius -> Spatial, opacity -> Effects)",
+    "springEffects": "FastEffects",
+    "springEffects_origin": "M3E-visual: MDC uses a duration here; the m3.material.io transition-patterns page ('The exiting screen quickly fades out', snapshot of 2026-10-03) justifies a quick fade, hence FastEffects (a deduction, not a value read from source)"
+  },
+  "fade": {
+    "incomingScale": 0.8,
+    "incomingScale_origin": "mdc-android/transition/MaterialFade.java:36",
+    "fadeInEnd": 0.3,
+    "fadeInEnd_origin": "mdc-android/transition/MaterialFade.java:37",
+    "exitWithoutScale": true,
+    "exitWithoutScale_origin": "mdc-android/transition/MaterialFade.java:65 (setScaleOnDisappear(false)); exit shorter than enter: :40 (motionDurationMedium4 enter) and :43 (motionDurationShort3 exit)",
+    "springEnter": "DefaultSpatial",
+    "springEnter_origin": "M3E-visual: MDC drives this pattern with duration/curve (legacy), not with a spring; the spring is chosen by the M3E rule (position/size/radius -> Spatial, opacity -> Effects); enter = Medium4 duration -> Default",
+    "springEnterEffects": "DefaultEffects",
+    "springEnterEffects_origin": "M3E-visual: MDC drives this pattern with duration/curve (legacy), not with a spring; the spring is chosen by the M3E rule (position/size/radius -> Spatial, opacity -> Effects); enter = Medium4 duration -> Default",
+    "springExit": "FastEffects",
+    "springExit_origin": "M3E-visual: exit uses the Short3 duration (mdc-android/transition/MaterialFade.java:43), shorter -> Fast; opacity -> Effects"
+  },
+  "morphCorners": {
+    "spring": "FastSpatial",
+    "spring_origin": "m3.material.io motion overview page (snapshot of 2026-10-03), line 80 (\"All component motion is driven by two tokens: expressive fast spatial and expressive fast effects\")",
+    "springEffects": "FastEffects",
+    "springEffects_origin": "m3.material.io motion overview page (snapshot of 2026-10-03), line 80"
+  }
+}
