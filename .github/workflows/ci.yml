@@ -32,12 +32,15 @@ jobs:
   test:
     name: Unit tests and static checks
     runs-on: ubuntu-latest
+    # The extensions target GNOME Shell 50: Ubuntu 24.04's gjs and mutter are too old for the tests.
+    container: debian:testing
     steps:
-      - uses: actions/checkout@v4
-      - name: Install GJS and gettext
+      - name: Install GJS, the mutter typelibs and gettext
         run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends gjs gir1.2-girepository-3.0 gettext python3
+          apt-get update
+          apt-get install -y --no-install-recommends ca-certificates git gjs gir1.2-girepository-3.0 \
+              gir1.2-mutter-18 gnome-shell gettext python3
+      - uses: actions/checkout@v4
       - name: Generated files are up to date
         run: python3 tools/generate.py --check
       - name: Embedded toolkit copies are up to date
