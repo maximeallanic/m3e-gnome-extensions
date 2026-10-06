@@ -37,7 +37,7 @@ jobs:
       - name: Install GJS and gettext
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends gjs gettext python3
+          sudo apt-get install -y --no-install-recommends gjs gir1.2-girepository-3.0 gettext python3
       - name: Generated files are up to date
         run: python3 tools/generate.py --check
       - name: Embedded toolkit copies are up to date
