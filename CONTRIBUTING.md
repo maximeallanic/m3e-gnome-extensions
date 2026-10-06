@@ -3,6 +3,40 @@
 Thanks for helping. These extensions run inside GNOME Shell and patch parts of it, so small, careful changes
 with a clean `disable()` are what matter most.
 
+## Ways to contribute
+
+- **Report a bug** with the issue form. A good report has the version, distribution, GNOME version, session type, steps
+  to reproduce and, for a visual problem, a screenshot with no personal data in it.
+- **Try it on another setup** (distribution, GNOME version, X11, another app) and report what you saw.
+- **Improve the documentation or translate it.** The README and docs are English first; a translation is a new
+  `README.<lang>.md` (keep the same structure) linked from the English one.
+- **Fix something or add a feature**, as described below. Look at the **good first issue** and **help wanted** labels. A report that an extension works (or does not) on another GNOME Shell version is valuable: say the exact version and what you saw.
+
+## How to contribute code
+
+1. **Discuss first** for anything beyond a small fix: open an issue (or a Discussion) describing the problem and the
+   approach, so that nobody spends time on something that will not be merged. See [GOVERNANCE.md](GOVERNANCE.md).
+2. **Fork** the repository and create a branch from `main` named `type/short-description`, where `type` is one of
+   `feat`, `fix`, `docs`, `refactor`, `test`, `ci`, `chore` (for example `fix/dock-label-contrast`).
+3. **Keep the change focused**: one subject per pull request, no unrelated reformatting.
+4. **Run the tests** described below before you push; add or update tests for the behaviour you changed.
+5. **Commit with [Conventional Commits](https://www.conventionalcommits.org/)** messages in English
+   (`fix(shell): raise contrast of disabled dialog buttons`). The pull request title follows the same format because
+   it becomes the squash-commit message.
+6. **Open the pull request** against `main`, fill in the template, link the issue (`Fixes #123`) and, for any visual
+   change, add before/after screenshots. Never include personal data (names, Wi-Fi networks, file names, e-mails,
+   wallpapers you do not have the right to share) in a screenshot.
+7. **Review**: a maintainer reviews, usually within a week. Respond to comments by pushing more commits (no force
+   push needed: the pull request is squashed). When CI is green and all conversations are resolved, the maintainer
+   merges.
+
+By contributing you agree that your work is released under the repository licence (MIT). You are responsible for what
+you submit, including anything produced with the help of a tool: read it, run it, and be able to explain it.
+
+What will not be merged: changes that hard-code one language, locale or script; bold text in the theme; steps that
+need root outside the explicit opt-ins; unpinned or unverified downloads; files over 500 lines; fixes that hide an
+error instead of fixing its cause. These are the design rules of the project; a fork is the place to change them.
+
 ## Ground rules
 
 - **English in code**: identifiers, comments, log lines and file names.
