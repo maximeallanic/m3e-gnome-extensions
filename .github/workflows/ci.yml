@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
+  workflow_call:   # reused by the release workflow
 
 permissions:
   contents: read
@@ -66,3 +67,16 @@ jobs:
         with:
           name: extension-zips
           path: dist/*.zip
+
+  deb:
+    name: Debian package and lintian
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install lintian
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends lintian gettext
+      - run: scripts/build-deb.sh 0.0.0-ci --out dist
+      - name: Lint the package
+        run: lintian --info --display-info --fail-on error dist/*.deb

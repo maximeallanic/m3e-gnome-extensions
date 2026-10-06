@@ -24,6 +24,7 @@ for f in tests/unit/*/test_*.js; do
 done
 step "bench report tests" python3 tests/bench/test_report.py
 step "install / uninstall" tests/test_install.sh
+step "deb package" tests/test_deb.sh
 if [[ -x node_modules/.bin/eslint ]]; then
     step "eslint" node_modules/.bin/eslint .
 else
