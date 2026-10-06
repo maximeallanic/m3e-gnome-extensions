@@ -85,3 +85,15 @@ automatically.
 ## Reporting bugs
 
 Use the issue templates. Include `gnome-shell --version`, session type, the theme version, and the relevant Shell log.
+
+## Releases (maintainer)
+
+1. On a branch, set `version-name` in every `extensions/*/metadata.json` and `version` in `package.json` to the new
+   version, and turn `[Unreleased]` in `CHANGELOG.md` into `[X.Y.Z] - date`. Merge it.
+2. On an up-to-date `main`: `scripts/release.sh X.Y.Z`. It checks the format, the CHANGELOG section, a clean tree,
+   consistent versions and that the tag is free, then prints the tag commands without running them.
+3. Push the tag (`vX.Y.Z`). The *Release* workflow runs the full CI, builds the `.deb`, the extensions.gnome.org zips,
+   the source tarball and `SHA256SUMS`, attests their provenance and creates the GitHub release with the CHANGELOG
+   section as notes. Versions below 1.0.0 or with a suffix are marked as pre-releases.
+4. To rehearse, run the workflow by hand (*Run workflow*, give a version): it builds everything and publishes nothing.
+5. Local build: `scripts/build-deb.sh X.Y.Z --out dist`, `scripts/pack.sh --out dist`.

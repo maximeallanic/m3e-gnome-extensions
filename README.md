@@ -52,6 +52,18 @@ scripts/install.sh --enable          # all three; or: scripts/install.sh m3e-mot
 copied extension is only discovered after you log out and in again; then run
 `gnome-extensions enable <uuid>` (or use the Extensions app). Use `--dest DIR` to install somewhere else.
 
+From a release (see the [releases page](https://github.com/maximeallanic/m3e-gnome-extensions/releases)):
+
+```sh
+# Debian/Ubuntu, system-wide, nothing is enabled for you (check the sums with: sha256sum -c SHA256SUMS)
+sudo apt install ./gnome-shell-extension-m3e_<version>_all.deb
+# any distribution, current user: one zip per extension
+gnome-extensions install --force m3e-motion@maximeallanic.github.io.shell-extension.zip
+```
+
+Then log out and in and run `gnome-extensions enable <uuid>`. The `.deb` has only been checked by unpacking it,
+not installed with `dpkg` on a live system.
+
 To produce zip files for upload to extensions.gnome.org:
 
 ```sh

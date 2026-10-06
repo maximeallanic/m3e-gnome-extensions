@@ -40,7 +40,7 @@ These are project choices, not accidents; a change that breaks one needs a stron
 ## Releases
 
 Semantic Versioning, recorded in `CHANGELOG.md`. The maintainer tags a release after CI passes and the pins have been
-re-checked. Only the latest release is supported (see [SECURITY.md](SECURITY.md)).
+re-checked, with the steps of the release section of [CONTRIBUTING.md](CONTRIBUTING.md). Only the latest release is supported (see [SECURITY.md](SECURITY.md)).
 
 ## Conduct and disputes
 
