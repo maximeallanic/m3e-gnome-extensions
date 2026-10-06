@@ -175,7 +175,7 @@ done
 [[ -z "${WAYLAND_DISPLAY:-}" && -z "${DISPLAY:-}" ]] || refuse "WAYLAND_DISPLAY/DISPLAY of the host inherited"
 valid_locale "${M3E_BENCH_LOCALE:-}" || refuse "invalid locale"
 SHELL_PID=''
-# shellcheck disable=SC2329  # invoked by the EXIT trap
+# shellcheck disable=SC2317,SC2329  # invoked by the EXIT trap
 cleanup() {
     if [[ -n "$SHELL_PID" ]] && kill -0 "$SHELL_PID" 2>/dev/null; then
         kill "$SHELL_PID" 2>/dev/null
