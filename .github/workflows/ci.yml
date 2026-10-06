@@ -14,7 +14,7 @@ jobs:
     name: ESLint (GJS)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -26,7 +26,7 @@ jobs:
     name: ShellCheck
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Run shellcheck on every shell script
         run: git ls-files -z '*.sh' | xargs -0 shellcheck -x
 
@@ -41,7 +41,7 @@ jobs:
           apt-get update
           apt-get install -y --no-install-recommends ca-certificates git gjs gir1.2-girepository-3.0 \
               gir1.2-mutter-18 gnome-shell gettext python3
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Generated files are up to date
         run: python3 tools/generate.py --check
       - name: Embedded toolkit copies are up to date
@@ -55,7 +55,7 @@ jobs:
     name: Pack for extensions.gnome.org
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Install gnome-extensions and gettext
         run: |
           sudo apt-get update
@@ -72,7 +72,7 @@ jobs:
     name: Debian package and lintian
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Install lintian
         run: |
           sudo apt-get update
