@@ -253,6 +253,11 @@ export class Track {
                 this._writeTarget();
             else
                 write(elapsed);
+            // Many tracks write virtual properties (radius, handle, geometry…) that Clutter does not see: a frame
+            // that damages nothing ends idle and Mutter dispatches the next one at once instead of waiting for
+            // vblank (up to 20,000 empty frames/s measured, real paints starved). Damage the actor on every
+            // frame, as a Clutter transition does.
+            this.actor.queue_redraw();
         });
         tl.connect('completed', () => {
             if (this.timeline !== tl)

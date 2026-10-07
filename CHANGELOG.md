@@ -6,6 +6,12 @@ All notable changes to this project are documented in this file. The format foll
 
 ## [Unreleased]
 
+### Fixed
+
+- Animations no longer stutter: a track writing a property Clutter does not see (virtual properties, effect
+  uniforms) left frames with nothing to paint, and Mutter re-dispatched them without waiting for vblank (up to
+  20,000 empty frames per second, real paints starved). Each track now damages its actor on every frame.
+
 ## [0.1.0] - 2026-10-06
 
 First public release (pre-release: run for real on the author's Debian machine with GNOME Shell 50.5, and in
