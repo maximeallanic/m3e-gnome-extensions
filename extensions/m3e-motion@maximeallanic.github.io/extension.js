@@ -10,7 +10,8 @@
 //   motion/system.js         : OSD, modal dialogs, banners;
 //   motion/notifications.js  : notification list (position pseudo-classes, list spring);
 //   components/*.js          : switch, slider, menus (quick settings and calendar shade), quick settings tiles,
-//                              top bar background while the overview is shown.
+//                              top bar background while the overview is shown, matched search terms in colour
+//                              instead of bold.
 //
 // Every module exports NAME, enable() and disable(). A module that fails to enable is logged, undone with its own
 // disable() (so nothing stays half patched) and left out; the others keep going. disable(): stopAll() first
@@ -30,10 +31,11 @@ import * as Slider from './components/slider.js';
 import * as Menus from './components/menus.js';
 import * as Tiles from './components/tiles.js';
 import * as View from './components/view.js';
+import * as Search from './components/search.js';
 
 const MODULES = [
     Gestures, Windows, Workspaces, Overview, Surfaces, System, Notifications,
-    Switch, Slider, Menus, Tiles, View,
+    Switch, Slider, Menus, Tiles, View, Search,
 ];
 
 function logModuleError(action, module, error) {

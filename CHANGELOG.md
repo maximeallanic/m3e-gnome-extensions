@@ -8,6 +8,13 @@ All notable changes to this project are documented in this file. The format foll
 
 ### Fixed
 
+- Overview search: the matched terms of list results were drawn in bold, because the Shell wraps them in `<b>`
+  markup, which wins over the stylesheet's `font-weight: normal`. `m3e-motion` (new `components/search.js`) now
+  highlights them at normal weight in the colour of the result title.
+- Status bar battery: the charging bolt follows the mains supply (UPower `OnBattery`), as Android does, instead of
+  the battery state. With charge thresholds (e.g. 75-80 %) a resting battery alternates between "Not charging" and
+  "Discharging", which made the bolt blink.
+
 - Animations no longer stutter: a track writing a property Clutter does not see (virtual properties, effect
   uniforms) left frames with nothing to paint, and Mutter re-dispatched them without waiting for vblank (up to
   20,000 empty frames per second, real paints starved). Each track now damages its actor on every frame.

@@ -21,9 +21,9 @@ Screenshots come from the [m3e-gnome](https://github.com/maximeallanic/m3e-gnome
 
 | Extension | UUID | What it does |
 |---|---|---|
-| **M3E Motion** | `m3e-motion@maximeallanic.github.io` | Replaces the Shell's animations with M3E choreographies driven by physical springs: container transform for app launch, minimise and restore, shared-axis transitions for workspaces and the app grid, fade for dialogs, spring-driven overview, OSD, banners, quick-settings shade. Also provides M3E components: switch, slider, popup menus, quick-settings tile morph. |
+| **M3E Motion** | `m3e-motion@maximeallanic.github.io` | Replaces the Shell's animations with M3E choreographies driven by physical springs: container transform for app launch, minimise and restore, shared-axis transitions for workspaces and the app grid, fade for dialogs, spring-driven overview, OSD, banners, quick-settings shade. Also provides M3E components: switch, slider, popup menus, quick-settings tile morph, and matched search terms highlighted by colour instead of bold. |
 | **M3E for Extensions** | `m3e-extensions@maximeallanic.github.io` | Loads the theme's extension stylesheet (so third-party extensions get M3E colours and shapes, reloaded when the palette changes) and moves the [Dash to Dock](https://extensions.gnome.org/extension/307/dash-to-dock/) slide and tooltips on M3E springs. Dash to Dock is optional. |
-| **Status Bar** | `status-bar@maximeallanic.github.io` | Android-style top-bar status area: every status icon takes the width of its ink instead of a square frame, the volume indicator only shows when muted, and the battery is a pill with the percentage inside (lightning bolt while charging). |
+| **Status Bar** | `status-bar@maximeallanic.github.io` | Android-style top-bar status area: every status icon takes the width of its ink instead of a square frame, the volume indicator only shows when muted, and the battery is a pill with the percentage inside (lightning bolt while on mains power). |
 
 ## Requirements
 
