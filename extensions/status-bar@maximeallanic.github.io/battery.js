@@ -2,9 +2,13 @@
 // of the text colour, the percentage in the middle; while charging, a bolt on the right overlaps the end of the
 // pill, cut out around its edge. Replaces the icon and the percentage label of the Shell's system indicator, which
 // keeps its UPower proxy (DisplayDevice).
+// The bolt follows the mains supply (the daemon's OnBattery), as Android does, not the battery state: at charge
+// thresholds (e.g. 75-80 %) a resting battery alternates between "Not charging" and "Discharging" on every current
+// spike the embedded controller measures, which made the bolt blink.
 // Colours and height come from the theme stylesheet (`.status-bar-battery`, see stylesheet.css and the m3e-gnome
 // Shell theme); the digits use the theme font at its weight, formatted for the session language (Intl).
 import Clutter from 'gi://Clutter';
+import Gio from 'gi://Gio';
 import GObject from 'gi://GObject';
 import Pango from 'gi://Pango';
 import PangoCairo from 'gi://PangoCairo';
@@ -51,10 +55,8 @@ class Battery extends St.DrawingArea {
         this.connect('style-changed', () => this.queue_relayout());
     }
 
-    refresh(percentage, deviceState) {
+    refresh(percentage, plugged) {
         this._percentage = Math.round(Math.max(0, Math.min(100, percentage)));
-        const plugged = [UPower.DeviceState.CHARGING, UPower.DeviceState.FULLY_CHARGED,
-            UPower.DeviceState.PENDING_CHARGE].includes(deviceState);
         if (plugged !== this._plugged) {
             this._plugged = plugged;
             this.queue_relayout();
@@ -201,16 +203,17 @@ class Battery extends St.DrawingArea {
     }
 });
 
+let cancellable = null;
 let cancelWait = null;
 let state = null;
 
 function apply() {
-    const {system, battery} = state;
+    const {system, battery, client} = state;
     const {powerToggle} = system._systemItem;
     const present = powerToggle.visible;
     const proxy = powerToggle._proxy;
     if (present)
-        battery.refresh(proxy.Percentage, proxy.State);
+        battery.refresh(proxy.Percentage, !client.on_battery);
     battery.visible = present;
     // Without a battery the Shell shows the power-off icon: we leave it to it.
     if (present && system._indicator.visible)
@@ -222,23 +225,40 @@ function apply() {
 }
 
 export function enable() {
-    cancelWait = whenIndicator('_system', system => {
-        const battery = new Battery();
-        const {powerToggle} = system._systemItem;
-        state = {system, battery};
-        state.ids = [
-            [powerToggle._proxy, powerToggle._proxy.connect('g-properties-changed', apply)],
-            [powerToggle, powerToggle.connect('notify::visible', apply)],
-            [system._indicator, system._indicator.connect('notify::visible', apply)],
-            [system._percentageLabel, system._percentageLabel.connect('notify::visible', apply)],
-            [battery, battery.connect('notify::visible', () => system._syncIndicatorsVisible())],
-        ];
-        system.add_child(battery);
-        apply();
+    cancellable = new Gio.Cancellable();
+    UPower.Client.new_async(cancellable, (_source, result) => {
+        let client;
+        try {
+            client = UPower.Client.new_finish(result);
+        } catch (e) {
+            if (!e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED))
+                console.error(`status-bar: UPower client failed: ${e.message}\n${e.stack}`);
+            return;
+        }
+        cancellable = null;
+        cancelWait = whenIndicator('_system', system => install(system, client));
     });
 }
 
+function install(system, client) {
+    const battery = new Battery();
+    const {powerToggle} = system._systemItem;
+    state = {system, battery, client};
+    state.ids = [
+        [client, client.connect('notify::on-battery', apply)],
+        [powerToggle._proxy, powerToggle._proxy.connect('g-properties-changed', apply)],
+        [powerToggle, powerToggle.connect('notify::visible', apply)],
+        [system._indicator, system._indicator.connect('notify::visible', apply)],
+        [system._percentageLabel, system._percentageLabel.connect('notify::visible', apply)],
+        [battery, battery.connect('notify::visible', () => system._syncIndicatorsVisible())],
+    ];
+    system.add_child(battery);
+    apply();
+}
+
 export function disable() {
+    cancellable?.cancel();
+    cancellable = null;
     cancelWait?.();
     cancelWait = null;
     if (!state)
